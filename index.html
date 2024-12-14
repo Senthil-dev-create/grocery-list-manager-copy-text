@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery List Manager</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="app-header">
+        <h1 class="app-title"><i class="fas fa-shopping-cart"></i> Grocery List Manager</h1>
+    </header>
+
+    <!-- Buttons Section -->
+    <div class="button-group" id="buttonGroup">
+        <button class="btn home-btn" id="homeNav"><i class="fas fa-home"></i> Home</button>
+        <button class="btn create-btn" id="createNav"><i class="fas fa-plus-circle"></i> Create List</button>
+        <button class="btn select-btn" id="selectListNav"><i class="fas fa-folder-open"></i> Select List</button>
+        <button class="btn list-btn" id="listNav"><i class="fas fa-list"></i> Current List</button>
+    </div>
+
+    <main class="container mt-5 pt-5" id="homePage">
+        <h2>Welcome to Grocery List Manager</h2>
+        <p>Organize your shopping with ease.</p>
+        <p>Click on the buttons above to get started:</p>
+        <ul>
+            <li><strong>Home:</strong> Returns to this page.</li>
+            <li><strong>Create List:</strong> Start a new grocery list.</li>
+            <li><strong>Select List:</strong> Choose an existing list to work with.</li>
+            <li><strong>Current List:</strong> View and manage the items in your selected list.</li>
+        </ul>
+    </main>
+    <main class="container mt-5 pt-5 d-none" id="createPage">
+        <section id="createListSection" class="mb-4">
+            <h2>Create New List</h2>
+            <form id="createListForm" class="form-inline justify-content-center">
+                <input type="text" id="listName" class="form-control mr-2 mb-2" placeholder="List Name" required>
+                <button type="submit" class="btn btn-primary mb-2"><i class="fas fa-plus-circle"></i> Create List</button>
+            </form>
+        </section>
+        <section id="addItemSection" class="mb-4">
+            <h2>Add Item</h2>
+            <form id="addItemForm" class="form-inline justify-content-center">
+                <input type="text" id="itemName" class="form-control mr-2 mb-2" placeholder="Item Name" required>
+                <input type="number" id="itemQuantity" class="form-control mr-2 mb-2" placeholder="Quantity" min="1" required>
+                <select id="itemUnit" class="form-control mr-2 mb-2" required>
+                    <option value="" disabled selected>Unit</option>
+                    <option value="No's">No's</option>
+                    <option value="kgs">kgs</option>
+                    <option value="grams">grams</option>
+                    <option value="litres">litres</option>
+                    <option value="ml">ml</option>
+                    <option value="packets">packets</option>
+                    <option value="boxes">boxes</option>
+                    <option value="bottles">bottles</option>
+                    <option value="cans">cans</option>
+                </select>
+                <select id="itemCategory" class="form-control mr-2 mb-2" required>
+                    <option value="" disabled selected>Category</option>
+                    <option value="Fruits">Fruits</option>
+                    <option value="Vegetables">Vegetables</option>
+                    <option value="Dairy">Dairy</option>
+                    <option value="Beverages">Beverages</option>
+                    <option value="Snacks">Snacks</option>
+                    <option value="Bakery">Bakery</option>
+                    <option value="Frozen Foods">Frozen Foods</option>
+                    <option value="Household Supplies">Household Supplies</option>
+                    <option value="Personal Care">Personal Care</option>
+                    <option value="Condiments">Condiments</option>
+                    <option value="Meat">Meat</option>
+                    <option value="Seafood">Seafood</option>
+                    <option value="Spices">Spices</option>
+                    <option value="Grains">Grains</option>
+                    <option value="Canned Goods">Canned Goods</option>
+                    <option value="Baking">Baking</option>
+                    <option value="Deli">Deli</option>
+                    <option value="Milk">Milk</option>
+                    <option value="Eggs">Eggs</option>
+                    <option value="Others">Others</option>
+                </select>
+                <button type="submit" class="btn btn-primary mb-2"><i class="fas fa-cart-plus"></i> Add Item</button>
+            </form>
+        </section>
+    </main>
+    <main class="container mt-5 pt-5 d-none" id="selectPage">
+        <section id="selectListSection" class="mb-4">
+            <h2>Select Existing List</h2>
+            <select id="existingListSelect" class="form-control mr-2 mb-2"></select>
+            <button id="deleteListButton" class="btn btn-danger mb-2"><i class="fas fa-trash-alt"></i> Delete List</button>
+        </section>
+    </main>
+    <main class="container mt-5 pt-5 d-none" id="listPage">
+        <section id="currentListSection">
+            <h2 id="listHeader" style="text-transform: uppercase; color: #ff7e5f;"></h2>
+            <table class="table table-striped" id="itemTable">
+                <thead>
+                    <tr>
+                        <th>ITEM NAME</th>
+                        <th>QUANTITY</th>
+                        <th>UNIT</th>
+                        <th>CATEGORY</th>
+                        <th>ACTION</th>
+                        <th>CHECKED</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <div class="button-group mb-4">
+                <button id="backToHomeButton" class="btn btn-secondary mb-2 ml-2"><i class="fas fa-arrow-left"></i> BACK TO HOME</button>
+                <button id="copyListBtn" class="btn btn-info mb-2 ml-2"><i class="fas fa-copy"></i> COPY LIST</button>
+            </div>
+            <div id="pagination" class="mt-4"></div>
+        </section>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
